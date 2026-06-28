@@ -7,15 +7,14 @@ The Arduino CAN generator is included as a support tool. It creates repeatable C
 ## System Overview
 
 ```text
-Arduino_CAN_generator  ->  CAN bus  ->  LoRa_sender  ->  LoRa link  ->  LoRa_receiver  ->  serial_reader.py  ->  test_data CSVs
+Arduino_CAN_generator  ->  CAN bus  ->  LoRa_sender  ->  LoRa link  ->  LoRa_receiver  ->  serial_reader.py  ->  data CSVs
 ```
 
 - `Arduino_CAN_generator/` simulates vehicle CAN frames at 500 kbps.
 - `LoRa_sender/` reads CAN frames, formats them as LoRa payloads, and runs the field-test sweep.
 - `LoRa_receiver/` receives LoRa packets, reports RSSI values, applies RSSI filters, and ACKs parameter changes.
 - `serial_reader.py` reads receiver serial output and writes CSV files into `test_data/`.
-- `test_data/` contains the field-test dataset grouped by measured distance.
-
+  
 ## Field-Test Workflow
 
 1. Flash the receiver sketch from `LoRa_receiver/` to the receiver board.
@@ -98,5 +97,4 @@ python -m pip install pyserial PyQt5
 - [`LoRa_sender/README.md`](LoRa_sender/README.md) documents the sender firmware, test commands, CAN input, and LoRa sweep behavior.
 - [`LoRa_receiver/README.md`](LoRa_receiver/README.md) documents the receiver firmware, RSSI output, ACK handling, and serial logger format.
 - [`Arduino_CAN_generator/README.md`](Arduino_CAN_generator/README.md) documents the CAN simulator and CAN frame layout.
-- [`test_data/README.md`](test_data/README.md) documents the dataset structure and CSV columns.
 
